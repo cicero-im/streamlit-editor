@@ -11,6 +11,7 @@ import dspy
 import re
 from datetime import datetime
 from langchain_text_splitters import RecursiveCharacterTextSplitter
+import fickling
 
 # Initialize dspy client
 load_dotenv()
@@ -394,7 +395,7 @@ def load_state_from_disk():
     """Load workspaces from disk"""
     try:
         with open('.streamlit/doc_state.pkl', 'rb') as f:
-            state_data = pickle.load(f)
+            state_data = fickling.load(f)
             
             workspaces = {}
             for workspace_id, workspace_data in state_data.get('workspaces', {}).items():
